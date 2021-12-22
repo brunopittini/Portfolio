@@ -2,12 +2,12 @@ import styled, { keyframes, css } from "styled-components";
 
 const navItemFade = keyframes`
 from{
-    opacity: 0;
-    transform: translate(50px);
+  opacity: 0;
+  transform: translate(50px);
 }
 to{
-    opacity: 1;
-    transform: translate(0px);
+  opacity: 1;
+  transform: translate(0px);
 }
 `;
 
@@ -16,7 +16,7 @@ const navItemAnimation = ({ index }) => css`
 `;
 
 export const Nav = styled.nav`
-  height: 80px;
+  height: 30px;
   width: 100%;
   padding: 0 20px;
   display: flex;
@@ -26,11 +26,13 @@ export const Nav = styled.nav`
   z-index: 98;
   transition: all 1s ease-in-out;
   background: rgba(2, 12, 27, 0.8);
+  top: ${({ scrollDirection }) =>
+    scrollDirection === "down" ? "-80px" : "40px"};
 `;
 
 export const Logo = styled.img`
-  width: 55px;
-  border-radius: 50%;
+  width: 400px;
+  padding: 0.8rem;
 `;
 
 export const MenuIcon = styled.div`
@@ -124,29 +126,29 @@ export const NavItemStyled = styled.li`
   @media (max-width: ${({ theme }) => theme.mobile}) {
     opacity: 0;
     margin: 1.2rem 0;
-    ${({ menuOpen }) => (menuOpen ? navItemAnimation : null)}
+    ${({ menuOpen }) => (menuOpen ? navItemAnimation : null)};
   }
 `;
 
 export const NavLink = styled.a`
-text-transform: uppercase:
-color: ${({ theme }) => theme.colors.white}
-letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.white};
+  letter-spacing: 1.5px;
 
-&::after{
+  &::after {
     content: "";
     display: block;
     height: 3px;
     width: 0%;
     background: ${({ theme }) => theme.colors.orange};
     transition: all ease-in-out 300ms;
-}
+  }
 
-&:hover{
-    &::after{
-        width: 100%
+  &:hover {
+    &::after {
+      width: 100%;
     }
-}
+  }
 `;
 
 export const Profile = styled.div`
@@ -157,29 +159,28 @@ export const Profile = styled.div`
     flex-direction: column;
     align-items: center;
 
-    img{
-        height: 9rem;
-        width: auto;
-        border-radius: 50%
-        display: block;
-        margin: 1.5rem 0;
+    img {
+      height: 9rem;
+      width: auto;
+      border-radius: 50%;
+      display: block;
+      margin: 1.5rem 0;
     }
   }
 `;
 
 export const SocialIcons = styled.div`
-    display: none;
+  display: none;
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-        width: 150px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        a{
-            margin: 0 0.5rem;
-            font-size: 2rem;
-        }
+    a {
+      margin: 0 0.5rem;
+      font-size: 2rem;
     }
   }
 `;

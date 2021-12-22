@@ -23,7 +23,6 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <NavBar />
-        <hr />
       </ThemeProvider>
     </>
   );

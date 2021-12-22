@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { NavItems } from "../../data/NavItems";
-
 import {
   LineOne,
   LineThree,
   LineTwo,
   Logo,
-  NavList,
   MenuIcon,
   Nav,
   NavItemStyled,
   NavLink,
+  NavList,
   Profile,
   SocialIcons,
 } from "../styles/layout/Nav.styled";
 import { FaYoutube, FaTwitter, FaGithub } from "react-icons/fa";
+import { CTAButton } from "../styles/common/CTAButton.styled";
+import useScrollDirection from "../../hooks/useScrollDirection";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const scrollDirection = useScrollDirection("down");
 
   return (
     <>
-      <Nav>
+      <Nav scrollDirection={scrollDirection}>
         <div>
           <a href="#hero-section">
             <Logo src="./images/logo.png" />
@@ -42,18 +44,15 @@ export const NavBar = () => {
                 onClick={() => setMenuOpen(false)}
               >
                 {navItem.isProfile ? (
-                  <NavLink href="#hero">
+                  <NavLink href="#hero-section">
                     <Profile>
-                      <img
-                        src="./images/profile-picture.jpg"
-                        alt="Bruno Pittini"
-                      />
+                      <img src="./images/profile-pic.jpg" alt="Bruno Pittini" />
                       <span>Bruno Pittini</span>
                     </Profile>
                   </NavLink>
                 ) : null}
                 {navItem.text ? (
-                  <NavLink href="{navItem.href">{navItem.text}</NavLink>
+                  <NavLink href={navItem.href}>{navItem.text}</NavLink>
                 ) : null}
                 {navItem.hasSocialIcons ? (
                   <SocialIcons>
